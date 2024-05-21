@@ -1,0 +1,31 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Department {
+  id             String       @id @default(uuid())
+  name           String
+  code           String
+  type           String
+  enabled        Boolean
+  parentId       String?
+  parent         Department?  @relation("Children", fields: [parentId], references: [id])
+  children       Department[] @relation("Children")
+  people         Person[]
+  numberOfPeople Int          @default(0)
+}
+
+model Person {
+  id           String      @id @default(uuid())
+  name         String
+  phone        String
+  cpf          String
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+}
