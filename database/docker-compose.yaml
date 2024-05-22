@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: graph-db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      TZ: America/Sao_Paulo
+    volumes:
+      - ./postgres_database:/var/lib/postgresql/data
+    expose:
+      - '5432'
+    networks:
+      - node_template
+
+networks:
+  node_template:
+    driver: bridge
+
+volumes:
+  postgres_database:
