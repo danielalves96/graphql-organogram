@@ -5,6 +5,7 @@ const typeDefs = gql`
     departments(filter: DepartmentFilterInput, search: String, pageSize: Int, currentPage: Int): DepartmentsResponse
     people(filter: PersonFilterInput, search: String, pageSize: Int, currentPage: Int): PeopleResponse
     departmentDetails(departmentId: ID!): DepartmentResponse
+    personDetails(personId: ID!): PersonResponse  # Nova query adicionada aqui
   }
 
   type PaginatedDepartments {

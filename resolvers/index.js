@@ -1,6 +1,7 @@
 const { departments } = require('./query/departments');
 const { people } = require('./query/people');
 const { departmentDetails } = require('./query/departmentDetails');
+const { personDetails } = require('./query/personDetails'); // Importando a nova query
 
 const { addPersonToDepartment } = require('./mutation/addPersonToDepartment');
 const { removePersonFromDepartment } = require('./mutation/removePersonFromDepartment');
@@ -18,7 +19,8 @@ const resolvers = {
   Query: {
     departments,
     people,
-    departmentDetails
+    departmentDetails,
+    personDetails
   },
   Mutation: {
     addPersonToDepartment,
