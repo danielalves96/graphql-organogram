@@ -1,7 +1,8 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
-const { typeDefs, resolvers } = require('./schema');
+const { typeDefs } = require('./schema');
+const { resolvers } = require('./resolvers');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -9,7 +10,7 @@ const prisma = new PrismaClient();
 async function startServer() {
   const app = express();
 
-  const schema = makeExecutableSchema({ typeDefs, resolvers: resolvers(prisma) });
+  const schema = makeExecutableSchema({ typeDefs, resolvers });
   const apolloServer = new ApolloServer({
     schema,
     context: { prisma },
