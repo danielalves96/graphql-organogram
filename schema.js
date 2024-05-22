@@ -537,15 +537,6 @@ const resolvers = (prisma) => ({
     },
     createDepartment: async (parent, { input }) => {
       try {
-        const existingDepartment = await prisma.department.findUnique({ where: { code: input.code } });
-        if (existingDepartment) {
-          return {
-            statusCode: 409,
-            status: "error",
-            message: "Department with this code already exists | Departamento com esse código já existe"
-          };
-        }
-
         const newDepartment = await prisma.department.create({
           data: {
             id: uuidv4(),
@@ -564,6 +555,7 @@ const resolvers = (prisma) => ({
           result: newDepartment
         };
       } catch (error) {
+        console.error("Error creating department:", error);
         return {
           statusCode: 500,
           status: "error",
@@ -600,6 +592,7 @@ const resolvers = (prisma) => ({
           result: updatedDepartment
         };
       } catch (error) {
+        console.error("Error updating department:", error);
         return {
           statusCode: 500,
           status: "error",
