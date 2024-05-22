@@ -10,7 +10,10 @@ async function startServer() {
   const app = express();
 
   const schema = makeExecutableSchema({ typeDefs, resolvers: resolvers(prisma) });
-  const apolloServer = new ApolloServer({ schema });
+  const apolloServer = new ApolloServer({
+    schema,
+    introspection: true
+  });
 
   await apolloServer.start();
   apolloServer.applyMiddleware({ app });
