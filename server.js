@@ -12,6 +12,7 @@ async function startServer() {
   const schema = makeExecutableSchema({ typeDefs, resolvers: resolvers(prisma) });
   const apolloServer = new ApolloServer({
     schema,
+    context: { prisma },
     introspection: true
   });
 

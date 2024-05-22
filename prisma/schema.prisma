@@ -9,23 +9,33 @@ generator client {
 }
 
 model Department {
-  id             String       @id @default(uuid())
+  id             String               @id @default(uuid())
   name           String
   code           String
   type           String
   enabled        Boolean
   parentId       String?
-  parent         Department?  @relation("Children", fields: [parentId], references: [id])
-  children       Department[] @relation("Children")
-  people         Person[]
-  numberOfPeople Int          @default(0)
+  parent         Department?          @relation("Children", fields: [parentId], references: [id])
+  children       Department[]         @relation("Children")
+  numberOfPeople Int                  @default(0)
+  people         PersonOnDepartment[]
 }
 
 model Person {
-  id           String      @id @default(uuid())
-  name         String
-  phone        String
-  cpf          String
-  departmentId String?
-  department   Department? @relation(fields: [departmentId], references: [id])
+  id          String               @id @default(uuid())
+  name        String
+  phone       String
+  cpf         String
+  departments PersonOnDepartment[]
+}
+
+model PersonOnDepartment {
+  personId     String
+  departmentId String
+  assignedAt   DateTime @default(now())
+
+  person     Person     @relation(fields: [personId], references: [id])
+  department Department @relation(fields: [departmentId], references: [id])
+
+  @@id([personId, departmentId])
 }

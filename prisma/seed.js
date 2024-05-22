@@ -35,13 +35,22 @@ const createPerson = async (departmentIds) => {
       name: faker.name.fullName(),
       phone: faker.phone.number('+55###########'),
       cpf: cpf.generate(),
-      departmentId: departmentIds.length ? faker.helpers.arrayElement(departmentIds) : null
     }
   });
 
-  if (person.departmentId) {
+  const numDepartments = faker.datatype.number({ min: 1, max: departmentIds.length });
+  const departmentsForPerson = faker.helpers.arrayElements(departmentIds, numDepartments);
+
+  for (let departmentId of departmentsForPerson) {
+    await prisma.personOnDepartment.create({
+      data: {
+        personId: person.id,
+        departmentId: departmentId,
+      }
+    });
+
     await prisma.department.update({
-      where: { id: person.departmentId },
+      where: { id: departmentId },
       data: { numberOfPeople: { increment: 1 } }
     });
   }
