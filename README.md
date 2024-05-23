@@ -189,10 +189,11 @@ updateDepartment
         }
     }
 
-addPersonToDepartment
+addPeopleToDepartment
 
-    mutation addPersonToDepartment($personId: ID!, $departmentId: ID!) {
-        addPersonToDepartment(personId: $personId, departmentId: $departmentId) {
+    mutation addPeopleToDepartment($personIds: [ID!]!, $departmentId: ID!) {
+        addPeopleToDepartment(personIds: $personIds, departmentId: $departmentId) {
+            statusCode
             status
             message
         }
