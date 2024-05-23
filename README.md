@@ -24,7 +24,9 @@
 
     npm run dev
 
-#### Queries e mutations disponíveis
+Fica disponível em: http://localhost:4000/graphql
+
+#### Queries e mutations disponíveis para testar
 
 departmentsList
 
