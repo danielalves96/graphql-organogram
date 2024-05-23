@@ -29,6 +29,7 @@ const typeDefs = gql`
     type: String
     numberOfPeople: Int
     enabled: Boolean
+    description: String
     people: [Person]
     children: [Department]
   }
@@ -60,6 +61,7 @@ const typeDefs = gql`
     type: String!
     enabled: Boolean!
     parentId: ID
+    description: String
   }
 
   input UpdateDepartmentInput {
@@ -69,6 +71,7 @@ const typeDefs = gql`
     type: String
     enabled: Boolean
     parentId: ID
+    description: String
   }
 
   type Mutation {

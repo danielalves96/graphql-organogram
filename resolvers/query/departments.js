@@ -30,6 +30,9 @@ const departments = async (parent, { filter, search, pageSize = 10, currentPage 
       if (filter.code) {
         departments = departments.filter(dept => dept.code.includes(filter.code));
       }
+      if (filter.description) {
+        departments = departments.filter(dept => dept.description.includes(filter.description));
+      }
       if (filter.type) {
         departments = departments.filter(dept => dept.type.includes(filter.type));
       }

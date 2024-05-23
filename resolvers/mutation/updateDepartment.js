@@ -16,7 +16,8 @@ const updateDepartment = async (parent, { input }, { prisma }) => {
         code: input.code,
         type: input.type,
         enabled: input.enabled,
-        parentId: input.parentId
+        parentId: input.parentId,
+        description: input.description
       }
     });
 

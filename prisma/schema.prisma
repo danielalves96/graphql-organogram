@@ -13,6 +13,7 @@ model Department {
   code           String
   type           String
   enabled        Boolean
+  description    String?
   parentId       String?
   parent         Department?          @relation("Children", fields: [parentId], references: [id])
   children       Department[]         @relation("Children")

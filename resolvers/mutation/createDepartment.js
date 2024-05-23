@@ -9,7 +9,8 @@ const createDepartment = async (parent, { input }, { prisma }) => {
         code: input.code,
         type: input.type,
         enabled: input.enabled,
-        parentId: input.parentId || null
+        parentId: input.parentId || null,
+        description: input.description || null
       }
     });
 

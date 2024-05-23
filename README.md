@@ -48,6 +48,7 @@ departmentsList
       type
       numberOfPeople
       enabled
+      description
       people {
         id
         name
@@ -104,6 +105,7 @@ departmentGetById
         type
         numberOfPeople
         enabled
+        description
         people {
             id
             name
@@ -169,6 +171,7 @@ createDepartment
                 code
                 type
                 enabled
+                description
             }
         }
     }
