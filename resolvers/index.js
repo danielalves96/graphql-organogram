@@ -3,8 +3,8 @@ const { people } = require('./query/people');
 const { departmentDetails } = require('./query/departmentDetails');
 const { personDetails } = require('./query/personDetails'); // Importando a nova query
 
-const { addPersonToDepartment } = require('./mutation/addPersonToDepartment');
-const { removePersonFromDepartment } = require('./mutation/removePersonFromDepartment');
+const { addPeopleToDepartment } = require('./mutation/addPeopleToDepartment');
+const { removePeopleFromDepartment } = require('./mutation/removePeopleFromDepartment');
 const { activateDepartment } = require('./mutation/activateDepartment');
 const { deactivateDepartment } = require('./mutation/deactivateDepartment');
 const { addChildDepartment } = require('./mutation/addChildDepartment');
@@ -23,8 +23,8 @@ const resolvers = {
     personDetails
   },
   Mutation: {
-    addPersonToDepartment,
-    removePersonFromDepartment,
+    addPeopleToDepartment,
+    removePeopleFromDepartment,
     activateDepartment,
     deactivateDepartment,
     addChildDepartment,

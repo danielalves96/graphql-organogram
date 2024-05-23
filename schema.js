@@ -72,8 +72,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addPersonToDepartment(personId: ID!, departmentId: ID!): MutationResponse
-    removePersonFromDepartment(personId: ID!, departmentId: ID!): MutationResponse
+    addPeopleToDepartment(personIds: [ID!]!, departmentId: ID!): MutationResponse!
+    removePeopleFromDepartment(personIds: [ID!]!, departmentId: ID!): MutationResponse!
     activateDepartment(departmentId: ID!): MutationResponse
     deactivateDepartment(departmentId: ID!): MutationResponse
     addChildDepartment(parentDepartmentId: ID!, childDepartmentId: ID!): MutationResponse
